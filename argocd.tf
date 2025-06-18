@@ -19,4 +19,12 @@ resource "helm_release" "argocd" {
     name  = "server.service.servicePortHttps"
     value = "443"
   }
+
+  depends_on = [module.eks]
+}
+
+resource "kubectl_manifest" "argocd_app" {
+  yaml_body = file("${path.module}/argocd/application.yaml")
+
+  depends_on = [module.eks, helm_release.argocd]
 }

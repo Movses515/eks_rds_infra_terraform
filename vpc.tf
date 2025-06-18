@@ -9,8 +9,9 @@ module "vpc" {
   public_subnets  = ["10.0.0.0/20", "10.0.16.0/20"]
   private_subnets = ["10.0.32.0/19", "10.0.64.0/19"]
 
-  enable_nat_gateway = true
-  single_nat_gateway = true
+  enable_nat_gateway   = true
+  single_nat_gateway   = true
+  enable_dns_hostnames = true
 
   map_public_ip_on_launch = true
 }

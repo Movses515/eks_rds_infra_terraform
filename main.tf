@@ -17,8 +17,9 @@ module "eks" {
       instance_types = ["t3.medium"]
       capacity_type  = "SPOT"
       min_size       = 1
-      desired_size   = 2
+      desired_size   = 1
       max_size       = 2
+      subnet_ids     = module.vpc.private_subnets
     }
   }
 

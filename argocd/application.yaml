@@ -1,12 +1,12 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: root-app
+  name: asp-net-app
   namespace: argocd
 spec:
   project: default
   source:
-    repoURL: git@github.com:Movses515/asp.net-simple-app.git
+    repoURL: https://github.com/Movses515/asp.net-simple-app.git
     targetRevision: HEAD
     path: helm
   destination:

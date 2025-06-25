@@ -20,8 +20,20 @@ module "eks" {
       desired_size   = 1
       max_size       = 2
       subnet_ids     = module.vpc.private_subnets
+      iam_role_additional_policies = {
+        cloudwatch_logs = aws_iam_policy.fluent_bit_logs.arn
+      }
     }
   }
+
+  cluster_enabled_log_types = [
+    "api",
+    "audit",
+    "authenticator",
+    "controllerManager",
+    "scheduler"
+  ]
+
 
   tags = {
     Environment = "Test"
